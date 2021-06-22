@@ -1,18 +1,24 @@
 {
-  "name": "~TODO~",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "svelte-kit dev",
-    "build": "svelte-kit build",
-    "preview": "svelte-kit preview"
-  },
-  "devDependencies": {
-    "@sveltejs/adapter-static": "^1.0.0-next.13",
-    "@sveltejs/kit": "next",
-    "svelte": "^3.34.0"
-  },
-  "type": "module",
-  "dependencies": {
-    "firebase": "9.0.0-beta.2"
-  }
+	"name": "~TODO~",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "svelte-kit dev",
+		"build": "svelte-kit build",
+		"preview": "svelte-kit preview"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-static": "^1.0.0-next.13",
+		"@sveltejs/kit": "next",
+		"autoprefixer": "^10.2.6",
+		"cssnano": "^5.0.6",
+		"postcss": "^8.3.5",
+		"postcss-load-config": "^3.1.0",
+		"svelte": "^3.34.0",
+		"svelte-preprocess": "^4.7.3"
+	},
+	"type": "module",
+	"dependencies": {
+		"bootstrap": "^5.0.1",
+		"firebase": "9.0.0-beta.2"
+	}
 }

@@ -1,12 +1,13 @@
 <script>
   import { loginWithGoogle, doLogout } from "$lib/auth";
   import { currentUser } from "$stores/user";
+  // You can specify which plugins you need
 </script>
 
 {#if $currentUser.loggedIn}
-  <button on:click={doLogout}>Logout</button>
+  <button class="btn btn-danger" on:click={doLogout}>Logout</button>
 {:else}
-  <button on:click={loginWithGoogle}> Login </button>
+  <button class="btn btn-success" on:click={loginWithGoogle}> Login </button>
 {/if}
 
 <div>
@@ -16,4 +17,19 @@
   {:else}
     <p>Please login</p>
   {/if}
+</div>
+
+<!-- Example single danger button -->
+<div class="btn-group">
+  <button
+    type="button"
+    class="btn btn-primary dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    Action
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href=".">Action</a></li>
+  </ul>
 </div>
