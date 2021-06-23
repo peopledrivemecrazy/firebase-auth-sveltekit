@@ -5,11 +5,17 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  signInWithRedirect,
 } from "firebase/auth";
 
 import { currentUser } from "$stores/user";
 
 const provider = new GoogleAuthProvider();
+
+export const loginWithRedirect = async () => {
+  const auth = getAuth();
+  signInWithRedirect(auth, provider);
+};
 
 export const createWithEmailAndPassword = async (email, password) => {
   console.log({ email, password });
@@ -69,6 +75,7 @@ export const doLogout = async () => {
 
 export const authChanged = () => {
   const auth = getAuth();
+
   onAuthStateChanged(auth, async (user) => {
     if (user) {
       // User is signed in, see docs for a list of available properties

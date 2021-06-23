@@ -11,4 +11,3 @@ export const fbenv = writable({
   firebaseControlled: false,
   firestoreReady: false,
 });
-

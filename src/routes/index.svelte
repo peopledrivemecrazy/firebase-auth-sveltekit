@@ -1,13 +1,41 @@
 <script>
-  import { loginWithGoogle, doLogout } from "$lib/auth";
+  import { browser } from "$app/env";
+
+  import { loginWithRedirect, doLogout } from "$lib/auth";
+  import Loader from "$lib/Loader.svelte";
   import { currentUser } from "$stores/user";
+  import { onMount } from "svelte";
   // You can specify which plugins you need
+
+  let loader = false;
+  async function doLogin() {
+    if (browser) {
+      window.location.href += "#gr";
+      loader = true;
+    }
+    loginWithRedirect();
+  }
+
+  onMount(() => {
+    if (window.location.hash === "#gr") {
+      loader = true;
+    }
+  });
+
+  $: {
+    if ($currentUser.user) {
+      loader = false;
+      if (browser) {
+        history.replaceState(null, null, " ");
+      }
+    }
+  }
 </script>
 
 {#if $currentUser.loggedIn}
   <button class="btn btn-danger" on:click={doLogout}>Logout</button>
 {:else}
-  <button class="btn btn-success" on:click={loginWithGoogle}> Login </button>
+  <button class="btn btn-success" on:click={doLogin}> Login </button>
 {/if}
 
 <div>
@@ -33,3 +61,7 @@
     <li><a class="dropdown-item" href=".">Action</a></li>
   </ul>
 </div>
+
+{#if loader}
+  <Loader />
+{/if}
